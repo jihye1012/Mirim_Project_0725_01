@@ -11,14 +11,17 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
     ActionBar.Tab tab1, tab2, tab3;
     MyFragment[] myFrags = new MyFragment[3];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,14 +86,20 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             layout.setOrientation(LinearLayout.VERTICAL);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layout.setLayoutParams(params);
+            layout.setGravity(Gravity.CENTER);
+            ImageView imgV = new ImageView(super.getActivity());
+            layout.addView(imgV);
             if (tabName.equals("양짛1")) {
                 layout.setBackgroundColor(Color.MAGENTA);
+                imgV.setImageResource(R.drawable.app_icon);
             }
             if (tabName.equals("양짛2")) {
                 layout.setBackgroundColor(Color.YELLOW);
+                imgV.setImageResource(R.drawable.dprlive);
             }
             if (tabName.equals("양짛3")) {
                 layout.setBackgroundColor(Color.BLUE);
+                imgV.setImageResource(R.drawable.musictoktok);
             }
             return layout;
         }
